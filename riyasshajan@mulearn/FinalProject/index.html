@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Scalable Web App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2ca1bd 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Keeps the floating shapes from causing scrollbars */
+        }
+
+        /* --- The Floating Background Shapes --- */
+        .shape {
+            position: absolute;
+            filter: blur(5px);
+            z-index: -1; /* Puts them BEHIND the glass card */
+            animation: float 8s ease-in-out infinite;
+        }
+        .shape1 {
+            width: 200px;
+            height: 200px;
+            background: #ff758c;
+            border-radius: 50%;
+            top: 15%;
+            left: 25%;
+            animation-delay: 0s;
+        }
+        .shape2 {
+            width: 250px;
+            height: 250px;
+            background: #ff7eb3;
+            border-radius: 50%;
+            bottom: 15%;
+            right: 25%;
+            animation-delay: -4s; /* Starts at a different time */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+
+        /* --- The Glass Card --- */
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            padding: 50px 70px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 10; /* Keeps the card IN FRONT */
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        p {
+            font-size: 1.3em;
+            margin: 10px 0;
+        }
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255, 117, 140, 0.8);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+
+    <div class="container">
+        <h1>🚀 Kubernetes Deployed!</h1>
+        <p>This scalable web app is running inside Docker & KIND.</p>
+        <p>Student: <span class="highlight">Riya</span></p>
+        <div class="badge">Status: Production Ready</div>
+    </div>
+</body>
+</html>
